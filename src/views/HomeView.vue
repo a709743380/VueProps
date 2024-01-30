@@ -1,18 +1,21 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+    <HelloWorld :msg="myData.msg" />
+    <AboutView v-model="myData.msg" />
+    <AboutViewOP v-model="myData.msg" />
   </div>
 </template>
 
-<script lang="ts">
-import { Options, Vue } from "vue-class-component";
-import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
+<script setup lang="ts">
+// 引入 Vue
+import { defineComponent, reactive } from "vue";
+import HelloWorld from "@/components/HelloWorld.vue"; // 假設 HelloWorld 組件位於相同目錄下
+import AboutView from "./AboutView.vue"; // 假設 HelloWorld 組件位於相同目錄下
+import AboutViewOP from "@/views/AboutViewOP.vue"; // 假設 HelloWorld 組件位於相同目錄下
+import { HomeData } from "@/interfaces/HomeData"; // 假設 HelloWorld 組件位於相同目錄下
 
-@Options({
-  components: {
-    HelloWorld,
-  },
-})
-export default class HomeView extends Vue {}
+const myData: HomeData = reactive({
+  msg: "Hello from HomeData!",
+});
 </script>

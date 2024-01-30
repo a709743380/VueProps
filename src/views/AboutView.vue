@@ -1,5 +1,16 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <label>組件AboutView</label>
+    <input
+      type="text"
+      :value="props.modelValue"
+      @input="emits('update:modelValue', $event.target.value)"
+    />
   </div>
 </template>
+
+<script setup lang="ts">
+import { defineProps, defineEmits } from "vue";
+const props = defineProps(["modelValue"]);
+const emits = defineEmits(["update:modelValue"]);
+</script>
